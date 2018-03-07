@@ -1,0 +1,121 @@
+/*********************************************************************
+ * File                 : Travel Details.txt
+ * Author Name          : Kavya S N 
+ * Desc                 : Program to calculate total number of tickets.
+ * Version              : 1.0
+ * Last Modified Date   : 23-Feb-2018
+ * Change Description   : Description about the changes implemented
+ *********************************************************************/
+BEGIN
+	ACCEPT passengerName,source,destination AS STRING 
+	ACCEPT noOfTicket,totalPassenger AS INTEGER AND STORE 0
+	ACCEPT travelDate AS DATE
+
+	IF (isValid(source)) THEN
+		PRINT "Enter Your Destination " 
+	ELSE
+		RAISE NoSuchElement("Entered starting point does not exist"+source
+			IF (isValid(destination)) THEN 
+				priceCalculate();
+			Else 
+			PRINTF "The entered route service is not available try again!!!"
+			END IF
+	END IF
+EXCEPTION
+	WHEN noSuchElement THEN
+	PRINT "errormessage" //Error message returned from exception.
+	PRINTF "Number of tickets" + noOfTicket
+	PRINTF "Price for adult tickets = " +adultTicket
+	PRINTF "Price for children tickets = " +childTicket
+	PRINTF "Total price is:"+(adultTicket+childTicket)
+END
+/*********************************************************************
+* Module Name         : priceCalculate() 
+* Return Type         : INTEGER
+* Author              : Kavya S N 
+* Creation Date       : 23-Feb-2018
+* Description         : Calculation of ticket price
+*********************************************************************/
+SUB priceCalculate(adultTicket,childTicket )
+	Declare adultPrice AS CONSTANT AND STORE 15
+	Declare childPrice AS CONSTANT AND STORE 8
+	Declare adultTicket,childTicket,adultCount,childCount AS INTEGER
+
+	PRINT "Enter the number of passengers:" AND STORE THE VALUE IN totalPassenger
+	PRINTF "Enter number of adults: " AND STORE THE VALUE IN adultCount
+	IF(isvalid(adultCount)) THEN 
+		adultTicket = adultPrice*adultCount
+	END IF
+	
+	PRINTF "Enter number of children:"AND STORE THE VALUE IN childCount
+	IF(isvalid(childCount)) THEN 
+		childTicket = childPrice*childCount
+	END IF
+	
+	noOfTicket = adultCount + childCount
+END SUB
+
+/*********************************************************************
+* Module Name         : isValid()
+* Input Parameters    : data
+* Return Type         : BOOLEAN
+* Author              : Kavya S N 
+* Creation Date       : 23-Feb-2018
+* Description         : To validate data for accepting only 0 and 1  
+*********************************************************************/
+
+SUB isValid(data)
+	IF(isDigits(data)) THEN // Entered digits must be 0 and 1 
+		RETURN true
+	ELSE	
+		RETURN false
+	END IF
+END SUB
+/*********************************************************************
+* Module Name         : isValid()
+* Input Parameters    : data
+* Return Type         : BOOLEAN
+* Author              : Kavya S N 
+* Creation Date       : 23-Feb-2018
+* Description         : To validate data for accepting integers  
+*********************************************************************/
+
+SUB isValid(data)
+	IF(isDigits(data)) THEN // Entered digits must be 0 and 1 
+		RETURN true
+	ELSE	
+		RETURN false
+	END IF
+END SUB
+/*********************************************************************
+* Module Name         : isValid()
+* Input Parameters    : data
+* Return Type         : BOOLEAN
+* Author              : Kavya S N 
+* Creation Date       : 23-Feb-2018
+* Description         : To validate data for accepting string 
+*********************************************************************/
+
+SUB isValid(data)
+	IF(isString(data)) THEN // Entered digits must be 0 and 1 
+		RETURN true
+	ELSE	
+		RETURN false
+	END IF
+END SUB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
